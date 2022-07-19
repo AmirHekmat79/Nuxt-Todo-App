@@ -12,14 +12,21 @@
         />
         <button class="addButton" @click="addTodo()">Add</button>
       </div>
+      <div class="taskListsContainer">
+        <Tasks />
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
 import { tasks, ITodo } from "../scripts/Type";
+import Tasks from "../components/Tasks.vue";
 export default Vue.extend({
   name: "IndexPage",
+  components: {
+    Tasks,
+  },
   data() {
     return {
       currentTodo: "",
