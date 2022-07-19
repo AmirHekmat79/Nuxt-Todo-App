@@ -11,7 +11,15 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-png", href: "/checklist.png" }],
+    link: [
+      { rel: "icon", type: "image/x-png", href: "/checklist.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      {
+        href: "https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Fjalla+One&display=swap",
+        rel: "stylesheet",
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
