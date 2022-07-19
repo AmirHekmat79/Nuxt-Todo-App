@@ -2,9 +2,14 @@
   <div>
     <ul class="toDosContainer">
       <li class="toDoItem" v-for="(task, i) in tasks" :key="i">
-        <span class="taskName">{{ task.taskName }}</span>
+        <span
+          class="taskName"
+          :class="[task.taskStatus == 'Done' ? 'lineThrough' : '']"
+          >{{ task.taskName }}</span
+        >
         <span class="toDoButtons"
-          ><button class="UndoBtn">Undo</button
+          ><button class="UndoBtn" @click="changeStatus(task.taskStatus, task)">
+            {{ task.taskStatus }}</button
           ><button class="DeleteBtn" @click="deleteTodo(task.id)">
             Delete
           </button></span
@@ -33,6 +38,11 @@ export default Vue.extend({
       tasks.splice(removedIndex, 1);
       this.addTodoMethod();
     },
+    changeStatus(Status: string, task: ITodo) {
+      if (Status == "Undo") {
+        task.taskStatus = "Done";
+      } else task.taskStatus = "Undo";
+    },
   },
 });
 </script>
@@ -53,13 +63,18 @@ export default Vue.extend({
   justify-content: space-between;
   align-items: center;
 }
+
 .toDoButtons .UndoBtn,
 .DeleteBtn {
   margin: 5px;
   padding: 10px 15px;
   border-radius: 10px;
+  transition: all 0.6s;
 }
-
+.lineThrough {
+  text-decoration: line-through;
+  transition: all 0.7s;
+}
 .toDoButtons .DeleteBtn {
   background-color: #c02106;
 }
