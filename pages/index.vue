@@ -1,13 +1,16 @@
 <template>
   <div>
     <div class="container">
-      <span>
-        <font-awesome-icon icon="moon"> </font-awesome-icon>
-      </span>
       <h1>To Do List App</h1>
       <div class="addToolsContainer">
-        <input type="text" class="toDoInput" placeholder="Add Your New ToDo" />
-        <button class="addButton">Add</button>
+        <input
+          type="text"
+          class="toDoInput"
+          placeholder="Add Your New ToDo"
+          v-model="currentTodo"
+          @keyup.enter="addTodo()"
+        />
+        <button class="addButton" @click="addTodo()">Add</button>
       </div>
     </div>
   </div>
@@ -17,6 +20,16 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "IndexPage",
+  data() {
+    return {
+      currentTodo: "",
+    };
+  },
+  methods: {
+    addTodo() {
+      console.log(this.currentTodo);
+    },
+  },
 });
 </script>
 <style scoped>
