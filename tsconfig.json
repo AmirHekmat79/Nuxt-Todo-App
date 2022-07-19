@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "noEmit": true,
     "experimentalDecorators": true,
@@ -26,7 +26,8 @@
     },
     "types": [
       "@nuxt/types",
-      "@types/node"
+      "@types/node" 
+
     ]
   },
   "exclude": [

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <h1>To Do List App</h1>
+      <h1 :class="[icon == 'moon' ? 'light' : 'dark']">To Do List App</h1>
       <div class="addToolsContainer">
         <input
           type="text"
@@ -17,17 +17,27 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-
+import { tasks, ITodo } from "../scripts/Type";
 export default Vue.extend({
   name: "IndexPage",
   data() {
     return {
       currentTodo: "",
+      currentStatus: "Undo",
+      icon: "moon",
     };
   },
   methods: {
     addTodo() {
-      console.log(this.currentTodo);
+      if (this.currentTodo) {
+        let newTodo: ITodo = {
+          id: tasks.length + 1,
+          taskName: this.currentTodo,
+          taskStatus: this.currentStatus,
+        };
+        tasks.push(newTodo);
+        this.currentTodo = "";
+      }
     },
   },
 });
@@ -36,6 +46,13 @@ export default Vue.extend({
 .container h1 {
   text-align: center;
   margin: 30px;
+}
+.dark {
+  color: #232526;
+}
+
+.light {
+  color: #eee;
 }
 .addToolsContainer {
   display: flex;
