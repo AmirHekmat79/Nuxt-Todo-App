@@ -13,7 +13,7 @@
         <button class="addButton" @click="addTodo()">Add</button>
       </div>
       <div class="taskListsContainer">
-        <Tasks />
+        <Tasks :addTodoMethod="addTodo" />
       </div>
     </div>
   </div>

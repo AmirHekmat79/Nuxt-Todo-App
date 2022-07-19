@@ -5,7 +5,9 @@
         <span class="taskName">{{ task.taskName }}</span>
         <span class="toDoButtons"
           ><button class="UndoBtn">Undo</button
-          ><button class="DeleteBtn">Delete</button></span
+          ><button class="DeleteBtn" @click="deleteTodo(task.id)">
+            Delete
+          </button></span
         >
       </li>
     </ul>
@@ -17,10 +19,20 @@ import { tasks, ITodo } from "../scripts/Type";
 
 export default Vue.extend({
   name: "Tasks",
+  props: ["addTodoMethod"],
   data() {
     return {
       tasks,
     };
+  },
+  methods: {
+    deleteTodo(id: number) {
+      let removedIndex: number = tasks.findIndex((task) => {
+        return task.id == id;
+      });
+      tasks.splice(removedIndex, 1);
+      this.addTodoMethod();
+    },
   },
 });
 </script>
@@ -70,6 +82,7 @@ export default Vue.extend({
   .toDosContainer .toDoItem {
     width: 100%;
     margin: auto;
+    margin-top: 29px;
   }
 }
 @media (min-width: 1287px) {
