@@ -20,4 +20,18 @@ export default Vue.extend({
   },
 });
 </script>
-<style scoped></style>
+<style scoped>
+.toDosContainer {
+  text-align: center;
+}
+.toDosContainer .toDoItem {
+  background-color: #fdbb2d;
+  margin: auto;
+  list-style-type: none;
+  border-radius: 10px;
+  padding: 24px 60px;
+  width: 50%;
+  margin-top: 30px;
+  cursor: pointer;
+}
+</style>
