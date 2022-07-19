@@ -35,8 +35,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
+    "@nuxtjs/fontawesome",
   ],
-
+  fontawesome: {
+    icons: {
+      solid: true,
+      brands: true,
+    },
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 

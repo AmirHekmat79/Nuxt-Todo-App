@@ -1,7 +1,16 @@
 <template>
   <div>
     <div class="container">
-      <h1 :class="[icon == 'moon' ? 'light' : 'dark']">To Do List App</h1>
+      <span>
+        <font-awesome-icon
+          :icon="Icon"
+          class="themeIcon"
+          @click="changeTheme()"
+          :class="[Icon == 'moon' ? 'darkThemeIcon' : 'lightThemeIcon']"
+        >
+        </font-awesome-icon>
+      </span>
+      <h1 :class="[Icon == 'moon' ? 'light' : 'dark']">To Do List App</h1>
       <div class="addToolsContainer">
         <input
           type="text"
@@ -31,7 +40,7 @@ export default Vue.extend({
     return {
       currentTodo: "",
       currentStatus: "Undo",
-      icon: "moon",
+      Icon: "moon",
     };
   },
   methods: {
@@ -46,6 +55,15 @@ export default Vue.extend({
         this.currentTodo = "";
       }
     },
+    changeTheme() {
+      if (this.Icon == "moon") {
+        this.Icon = "sun";
+        document.body.style.backgroundColor = "#79cbca";
+      } else {
+        this.Icon = "moon";
+        document.body.style.backgroundColor = "#232526";
+      }
+    },
   },
 });
 </script>
@@ -58,6 +76,19 @@ export default Vue.extend({
   color: #232526;
 }
 
+.darkThemeIcon {
+  color: #eee;
+}
+.lightThemeIcon {
+  color: #ffcc33;
+}
+.themeIcon {
+  position: absolute;
+  font-size: 48px;
+  top: 27px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
 .light {
   color: #eee;
 }
