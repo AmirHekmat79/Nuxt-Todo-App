@@ -31,6 +31,7 @@
 import Vue from "vue";
 import { tasks, ITodo } from "../scripts/Type";
 import Tasks from "../components/Tasks.vue";
+import { json } from "express";
 export default Vue.extend({
   name: "IndexPage",
   components: {
@@ -52,6 +53,7 @@ export default Vue.extend({
           taskStatus: this.currentStatus,
         };
         tasks.push(newTodo);
+        // localStorage.setItem("toDo", JSON.stringify(tasks));
         this.currentTodo = "";
       }
     },
@@ -65,6 +67,14 @@ export default Vue.extend({
       }
     },
   },
+  // created() {
+  //   if (typeof Storage !== "undefined") {
+  //     let toDos = JSON.parse(localStorage.getItem("toDo"));
+  //     if (!toDos) {
+  //       tasks.push(toDos);
+  //     }
+  //   }
+  // },
 });
 </script>
 <style scoped>
